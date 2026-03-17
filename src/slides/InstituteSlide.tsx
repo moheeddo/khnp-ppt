@@ -8,10 +8,10 @@ const HQ = { lat: 35.8347, lng: 129.2122 }
 // 정확한 좌표 기반 교육훈련센터 위치 (4-decimal precision, 공공데이터 기준)
 const TRAINING_CENTERS = [
   { name: '인재개발원 본원', lat: 35.8347, lng: 129.2122, type: 'training' as const, delay: 0.3 },
-  { name: '고리/새울 센터', lat: 35.3160, lng: 129.2750, type: 'training' as const, delay: 0.8 },
-  { name: '월성 센터', lat: 35.7097, lng: 129.4781, type: 'training' as const, delay: 1.1 },
-  { name: '한빛 센터', lat: 35.4089, lng: 126.4195, type: 'training' as const, delay: 1.4 },
-  { name: '한울 센터', lat: 37.0889, lng: 129.3812, type: 'training' as const, delay: 1.7 },
+  { name: '월성 교육훈련센터', lat: 35.7097, lng: 129.4781, type: 'training' as const, delay: 0.8 },
+  { name: '고리/새울 교육훈련센터', lat: 35.3160, lng: 129.2750, type: 'training' as const, delay: 1.1 },
+  { name: '한빛 교육훈련센터', lat: 35.4089, lng: 126.4195, type: 'training' as const, delay: 1.4 },
+  { name: '한울 교육훈련센터', lat: 37.0889, lng: 129.3812, type: 'training' as const, delay: 1.7 },
   { name: '수력연구교육센터', lat: 37.8756, lng: 127.7342, type: 'training' as const, delay: 2.0 },
 ]
 
@@ -66,9 +66,9 @@ export default function InstituteSlide() {
           <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
             {OVERVIEW_STATS.map((s, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-                <span style={{ fontSize: 'clamp(12px, 0.9vw, 16px)', color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{s.label}</span>
-                <span className="count-up" style={{ fontWeight: 800, fontSize: 'clamp(26px, 2.5vw, 44px)', color: s.color }}>{s.value}</span>
-                <span style={{ fontSize: 'clamp(12px, 0.9vw, 16px)', color: 'rgba(255,255,255,0.4)' }}>{s.unit}</span>
+                <span style={{ fontSize: 'clamp(14px, 1.1vw, 20px)', color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{s.label}</span>
+                <span className="count-up" style={{ fontWeight: 800, fontSize: 'clamp(30px, 3vw, 50px)', color: s.color }}>{s.value}</span>
+                <span style={{ fontSize: 'clamp(14px, 1.1vw, 20px)', color: 'rgba(255,255,255,0.4)' }}>{s.unit}</span>
                 {i < OVERVIEW_STATS.length - 1 && (
                   <div style={{ width: 1, height: 24, background: 'rgba(255,255,255,0.08)', marginLeft: 'clamp(12px, 1.5vw, 24px)' }} />
                 )}
@@ -85,7 +85,7 @@ export default function InstituteSlide() {
                 <h3 style={{ fontSize: 'clamp(18px, 1.6vw, 30px)', fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>
                   전국 <span className="gradient-text" style={{ fontWeight: 900 }}>6개</span> 교육훈련센터
                 </h3>
-                <p style={{ fontSize: 'clamp(10px, 0.7vw, 14px)', color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>
+                <p style={{ fontSize: 'clamp(12px, 0.9vw, 16px)', color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>
                   본원 → 각 센터 실시간 네트워크
                 </p>
               </div>
@@ -128,10 +128,10 @@ export default function InstituteSlide() {
                     }}>
                       {h.year}
                     </span>
-                    <p className="text-caption" style={{ color: 'rgba(255,255,255,0.6)', marginTop: 3 }}>
+                    <p style={{ fontSize: 'clamp(14px, 1.1vw, 20px)', color: 'rgba(255,255,255,0.6)', marginTop: 3 }}>
                       {h.event}
                     </p>
-                    <p style={{ fontSize: 'clamp(9px, 0.6vw, 12px)', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>
+                    <p style={{ fontSize: 'clamp(11px, 0.8vw, 15px)', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>
                       {h.sub}
                     </p>
                   </div>
