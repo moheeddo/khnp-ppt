@@ -8,7 +8,7 @@ const HQ = { lat: 35.8347, lng: 129.2122 }
 // 정확한 좌표 기반 교육훈련센터 위치 (4-decimal precision, 공공데이터 기준)
 const TRAINING_CENTERS = [
   { name: '인재개발원 본원', lat: 35.8347, lng: 129.2122, type: 'training' as const, delay: 0.3 },
-  { name: '월성 교육훈련센터', lat: 35.7097, lng: 129.4781, type: 'training' as const, delay: 0.8 },
+  { name: '월성 교육훈련센터', lat: 35.5800, lng: 129.3500, type: 'training' as const, delay: 0.8 },
   { name: '고리/새울 교육훈련센터', lat: 35.3160, lng: 129.2750, type: 'training' as const, delay: 1.1 },
   { name: '한빛 교육훈련센터', lat: 35.4089, lng: 126.4195, type: 'training' as const, delay: 1.4 },
   { name: '한울 교육훈련센터', lat: 37.0889, lng: 129.3812, type: 'training' as const, delay: 1.7 },
@@ -170,7 +170,7 @@ export default function InstituteSlide() {
                 {/* Map content (centered and scaled within globe) */}
                 <div style={{
                   position: 'absolute',
-                  top: '5%', left: '8%', right: '8%', bottom: '5%',
+                  top: '3%', left: '5%', right: '5%', bottom: '3%',
                   zIndex: 2,
                 }}>
                   <KoreaMap
@@ -189,7 +189,7 @@ export default function InstituteSlide() {
                 <div style={{
                   position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none',
                   background: `
-                    radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.8) 100%)
+                    radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(0,0,0,0.3) 82%, rgba(0,0,0,0.7) 100%)
                   `,
                 }} />
 
