@@ -104,8 +104,8 @@ export default function InstituteSlide() {
                 <div key={ring} style={{
                   position: 'absolute',
                   top: '50%', left: '50%',
-                  width: `${88 + ring * 8}%`,
-                  height: `${88 + ring * 8}%`,
+                  width: `${78 + ring * 7}%`,
+                  height: `${78 + ring * 7}%`,
                   borderRadius: '50%',
                   border: `${1.5 - ring * 0.4}px solid rgba(0,168,107,${0.2 - ring * 0.06})`,
                   animation: `globeRingPulse ${3 + ring * 0.8}s ease-in-out infinite ${ring * 0.5}s`,
@@ -118,7 +118,7 @@ export default function InstituteSlide() {
               <div style={{
                 position: 'absolute',
                 top: '50%', left: '50%',
-                width: '112%', height: '112%',
+                width: '98%', height: '98%',
                 borderRadius: '50%',
                 border: '1px dashed rgba(0,180,216,0.12)',
                 animation: 'globeRingSpin 60s linear infinite',
@@ -129,7 +129,7 @@ export default function InstituteSlide() {
               {/* Globe body */}
               <div style={{
                 position: 'relative',
-                width: '82%', maxWidth: '100%',
+                width: '72%', maxWidth: '100%',
                 aspectRatio: '1',
                 borderRadius: '50%',
                 overflow: 'hidden',
@@ -215,7 +215,7 @@ export default function InstituteSlide() {
               <div style={{
                 position: 'absolute',
                 top: '50%', left: '50%',
-                width: '85%', height: '85%',
+                width: '75%', height: '75%',
                 transform: 'translate(-50%, -50%)',
                 borderRadius: '50%',
                 background: 'radial-gradient(circle, rgba(0,168,107,0.12), rgba(0,114,206,0.06) 50%, transparent 70%)',

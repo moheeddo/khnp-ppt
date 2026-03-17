@@ -4,9 +4,8 @@ import KoreaMap from '../components/KoreaMap'
 
 // 정확한 좌표 기반 전체 발전소 데이터 (공공데이터 기준)
 const ALL_PLANTS = [
-  // 원자력 5개 본부
-  { name: '고리', lat: 35.3208, lng: 129.2783, type: 'nuclear' as const, capacityMW: 3137 },
-  { name: '새울', lat: 35.3214, lng: 129.2839, type: 'nuclear' as const, capacityMW: 5600 },
+  // 원자력 본부 (고리/새울은 동일 위치이므로 합쳐 표시)
+  { name: '고리/새울', lat: 35.3211, lng: 129.2811, type: 'nuclear' as const, capacityMW: 8737 },
   { name: '한빛', lat: 35.4131, lng: 126.4239, type: 'nuclear' as const, capacityMW: 5900 },
   { name: '월성', lat: 35.7128, lng: 129.4747, type: 'nuclear' as const, capacityMW: 4779 },
   { name: '한울', lat: 37.0928, lng: 129.3847, type: 'nuclear' as const, capacityMW: 10700 },
@@ -82,7 +81,7 @@ export default function BusinessSlide() {
                         borderBottom: `2px solid ${item.color}`,
                       }}>
                         <div style={{ fontWeight: 800, fontSize: 'clamp(20px, 2vw, 36px)', color: item.color }}>{item.value}</div>
-                        <div style={{ fontSize: 'clamp(10px, 0.7vw, 13px)', color: 'rgba(255,255,255,0.4)' }}>{item.label}</div>
+                        <div style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: 'rgba(255,255,255,0.4)' }}>{item.label}</div>
                       </div>
                     ))}
                   </div>
@@ -99,9 +98,9 @@ export default function BusinessSlide() {
                   { label: '월발전량', value: '15,440', unit: 'GWh', color: '#0072CE' },
                 ].map((s, j) => (
                   <div key={j} style={{ textAlign: 'center', padding: 'clamp(4px, 0.4vw, 8px) 0' }}>
-                    <div style={{ fontSize: 'clamp(10px, 0.7vw, 13px)', color: 'rgba(255,255,255,0.35)', marginBottom: 4 }}>{s.label}</div>
-                    <span style={{ fontWeight: 800, fontSize: 'clamp(22px, 2.2vw, 40px)', color: s.color }}>{s.value}</span>
-                    <span style={{ fontSize: 'clamp(10px, 0.7vw, 14px)', color: 'rgba(255,255,255,0.4)', marginLeft: 3 }}>{s.unit}</span>
+                    <div style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: 'rgba(255,255,255,0.35)', marginBottom: 4 }}>{s.label}</div>
+                    <span style={{ fontWeight: 800, fontSize: 'clamp(26px, 2.5vw, 44px)', color: s.color }}>{s.value}</span>
+                    <span style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: 'rgba(255,255,255,0.4)', marginLeft: 3 }}>{s.unit}</span>
                   </div>
                 ))}
               </div>
@@ -112,19 +111,19 @@ export default function BusinessSlide() {
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(8px, 0.8vw, 14px)' }}>
                   <div style={{ padding: 'clamp(8px, 0.7vw, 14px)', borderRadius: 10, background: 'rgba(0,180,216,0.08)', borderLeft: '3px solid #00B4D8' }}>
-                    <div style={{ fontSize: 'clamp(10px, 0.7vw, 13px)', color: '#00B4D8', fontWeight: 600, marginBottom: 4 }}>수력발전소</div>
+                    <div style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: '#00B4D8', fontWeight: 600, marginBottom: 4 }}>수력발전소</div>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-                      <span style={{ fontWeight: 800, fontSize: 'clamp(24px, 2.2vw, 40px)', color: '#fff' }}>10</span>
-                      <span style={{ fontSize: 'clamp(10px, 0.7vw, 13px)', color: 'rgba(255,255,255,0.4)' }}>개소</span>
-                      <span style={{ fontSize: 'clamp(10px, 0.7vw, 13px)', color: '#00B4D8', marginLeft: 'auto', fontWeight: 600 }}>903MW</span>
+                      <span style={{ fontWeight: 800, fontSize: 'clamp(26px, 2.4vw, 42px)', color: '#fff' }}>10</span>
+                      <span style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: 'rgba(255,255,255,0.4)' }}>개소</span>
+                      <span style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: '#00B4D8', marginLeft: 'auto', fontWeight: 600 }}>903MW</span>
                     </div>
                   </div>
                   <div style={{ padding: 'clamp(8px, 0.7vw, 14px)', borderRadius: 10, background: 'rgba(124,77,255,0.08)', borderLeft: '3px solid #7C4DFF' }}>
-                    <div style={{ fontSize: 'clamp(10px, 0.7vw, 13px)', color: '#7C4DFF', fontWeight: 600, marginBottom: 4 }}>양수발전소</div>
+                    <div style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: '#7C4DFF', fontWeight: 600, marginBottom: 4 }}>양수발전소</div>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-                      <span style={{ fontWeight: 800, fontSize: 'clamp(24px, 2.2vw, 40px)', color: '#fff' }}>7</span>
-                      <span style={{ fontSize: 'clamp(10px, 0.7vw, 13px)', color: 'rgba(255,255,255,0.4)' }}>개소</span>
-                      <span style={{ fontSize: 'clamp(10px, 0.7vw, 13px)', color: '#7C4DFF', marginLeft: 'auto', fontWeight: 600 }}>4,700MW</span>
+                      <span style={{ fontWeight: 800, fontSize: 'clamp(26px, 2.4vw, 42px)', color: '#fff' }}>7</span>
+                      <span style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: 'rgba(255,255,255,0.4)' }}>개소</span>
+                      <span style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: '#7C4DFF', marginLeft: 'auto', fontWeight: 600 }}>4,700MW</span>
                     </div>
                   </div>
                 </div>

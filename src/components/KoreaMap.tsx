@@ -371,7 +371,7 @@ export default function KoreaMap({ markers, style, showLegend = true, compact = 
                     whiteSpace: 'nowrap', padding: '3px 10px', borderRadius: 6,
                     background: 'rgba(0,0,0,0.75)', border: `1px solid ${cfg.color}60`,
                     backdropFilter: 'blur(8px)',
-                    fontSize: compact ? 'clamp(9px, 0.6vw, 11px)' : 'clamp(11px, 0.85vw, 16px)',
+                    fontSize: compact ? 'clamp(10px, 0.75vw, 14px)' : 'clamp(11px, 0.85vw, 16px)',
                     fontWeight: 700,
                     color: 'rgba(255,255,255,0.95)', zIndex: 3,
                     boxShadow: '0 2px 8px rgba(0,0,0,0.5)',
