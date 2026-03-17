@@ -78,21 +78,151 @@ export default function InstituteSlide() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'clamp(12px, 1.5vw, 24px)', flex: 1, minHeight: 0 }}>
-          {/* Map with connection lines */}
-          <div className="glass-card entrance entrance-d2" style={{ padding: 'clamp(10px, 0.8vw, 16px)' }}>
-            <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>
-              <div style={{ marginBottom: 'clamp(8px, 0.6vw, 12px)', padding: '0 6px' }}>
-                <h3 style={{ fontSize: 'clamp(18px, 1.6vw, 30px)', fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>
-                  전국 <span className="gradient-text" style={{ fontWeight: 900 }}>6개</span> 교육훈련센터
-                </h3>
-                <p style={{ fontSize: 'clamp(12px, 0.9vw, 16px)', color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>
-                  본원 → 각 센터 실시간 네트워크
-                </p>
+          {/* Globe-style Map */}
+          <div className="entrance entrance-d2" style={{
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            justifyContent: 'center', position: 'relative',
+          }}>
+            {/* Title above globe */}
+            <div style={{ marginBottom: 'clamp(8px, 0.6vw, 12px)', textAlign: 'center', width: '100%' }}>
+              <h3 style={{ fontSize: 'clamp(18px, 1.6vw, 30px)', fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>
+                전국 <span className="gradient-text" style={{ fontWeight: 900 }}>6개</span> 교육훈련센터
+              </h3>
+              <p style={{ fontSize: 'clamp(12px, 0.9vw, 16px)', color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>
+                본원 → 각 센터 실시간 네트워크
+              </p>
+            </div>
+
+            {/* Globe container */}
+            <div style={{
+              position: 'relative',
+              width: '100%', flex: 1, minHeight: 0,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              {/* Outer orbit rings */}
+              {[0, 1, 2].map(ring => (
+                <div key={ring} style={{
+                  position: 'absolute',
+                  top: '50%', left: '50%',
+                  width: `${88 + ring * 8}%`,
+                  height: `${88 + ring * 8}%`,
+                  borderRadius: '50%',
+                  border: `${1.5 - ring * 0.4}px solid rgba(0,168,107,${0.2 - ring * 0.06})`,
+                  animation: `globeRingPulse ${3 + ring * 0.8}s ease-in-out infinite ${ring * 0.5}s`,
+                  pointerEvents: 'none',
+                  zIndex: 0,
+                }} />
+              ))}
+
+              {/* Spinning dashed orbit */}
+              <div style={{
+                position: 'absolute',
+                top: '50%', left: '50%',
+                width: '112%', height: '112%',
+                borderRadius: '50%',
+                border: '1px dashed rgba(0,180,216,0.12)',
+                animation: 'globeRingSpin 60s linear infinite',
+                pointerEvents: 'none',
+                zIndex: 0,
+              }} />
+
+              {/* Globe body */}
+              <div style={{
+                position: 'relative',
+                width: '82%', maxWidth: '100%',
+                aspectRatio: '1',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                animation: 'globeRotate 12s ease-in-out infinite',
+                boxShadow: `
+                  0 0 40px rgba(0,168,107,0.2),
+                  0 0 80px rgba(0,168,107,0.1),
+                  inset 0 0 60px rgba(0,0,0,0.4),
+                  inset 0 -20px 40px rgba(0,0,0,0.3)
+                `,
+                border: '2px solid rgba(0,168,107,0.25)',
+                zIndex: 1,
+              }}>
+                {/* Dark globe background */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'radial-gradient(ellipse at 40% 35%, #0d2137, #060e1a 60%, #020810)',
+                }} />
+
+                {/* Latitude grid lines (curved via SVG) */}
+                <svg viewBox="0 0 100 100" style={{
+                  position: 'absolute', inset: 0, width: '100%', height: '100%',
+                  zIndex: 1, pointerEvents: 'none',
+                  animation: 'globeGridPulse 4s ease-in-out infinite',
+                }}>
+                  {/* Horizontal latitude lines */}
+                  {[20, 35, 50, 65, 80].map((y, i) => (
+                    <ellipse key={`lat-${i}`} cx="50" cy={y} rx={48 - Math.abs(y - 50) * 0.5} ry="0.3"
+                      fill="none" stroke="rgba(0,168,107,0.15)" strokeWidth="0.3" strokeDasharray="2 3" />
+                  ))}
+                  {/* Vertical longitude lines */}
+                  {[25, 40, 55, 70].map((x, i) => (
+                    <ellipse key={`lon-${i}`} cx={x} cy="50" rx="0.3" ry={44 - Math.abs(x - 50) * 0.4}
+                      fill="none" stroke="rgba(0,114,206,0.12)" strokeWidth="0.3" strokeDasharray="2 3" />
+                  ))}
+                </svg>
+
+                {/* Map content (centered and scaled within globe) */}
+                <div style={{
+                  position: 'absolute',
+                  top: '5%', left: '8%', right: '8%', bottom: '5%',
+                  zIndex: 2,
+                }}>
+                  <KoreaMap
+                    markers={TRAINING_CENTERS}
+                    connections={CONNECTIONS}
+                  />
+                </div>
+
+                {/* Sphere lighting overlay - top highlight */}
+                <div style={{
+                  position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none',
+                  background: 'radial-gradient(ellipse at 35% 25%, rgba(255,255,255,0.08), transparent 55%)',
+                }} />
+
+                {/* Sphere edge shadow - bottom and sides */}
+                <div style={{
+                  position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none',
+                  background: `
+                    radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.8) 100%)
+                  `,
+                }} />
+
+                {/* Scanline sweep effect */}
+                <div style={{
+                  position: 'absolute', left: 0, right: 0, height: '30%',
+                  zIndex: 4, pointerEvents: 'none',
+                  background: 'linear-gradient(to bottom, transparent, rgba(0,168,107,0.06), transparent)',
+                  animation: 'globeScanline 6s linear infinite',
+                }} />
+
+                {/* Top rim highlight */}
+                <div style={{
+                  position: 'absolute', top: 0, left: '15%', right: '15%', height: '2px',
+                  zIndex: 5, pointerEvents: 'none',
+                  background: 'linear-gradient(90deg, transparent, rgba(0,168,107,0.4), rgba(0,180,216,0.3), transparent)',
+                  borderRadius: 100,
+                  filter: 'blur(1px)',
+                }} />
               </div>
-              <KoreaMap
-                markers={TRAINING_CENTERS}
-                connections={CONNECTIONS}
-              />
+
+              {/* Outer glow behind globe */}
+              <div style={{
+                position: 'absolute',
+                top: '50%', left: '50%',
+                width: '85%', height: '85%',
+                transform: 'translate(-50%, -50%)',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(0,168,107,0.12), rgba(0,114,206,0.06) 50%, transparent 70%)',
+                filter: 'blur(20px)',
+                pointerEvents: 'none',
+                zIndex: 0,
+              }} />
             </div>
           </div>
 
